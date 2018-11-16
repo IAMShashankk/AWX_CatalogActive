@@ -19,5 +19,5 @@
       url_password: "4qAprsnt"
   - name: Make catalog active
     win_package:
-        path: "C:\Program Files\Harmonic\NMX\DOTNETGUI\COMApplication.exe"
+        path: C:\Program Files\Harmonic\NMX\DOTNETGUI\COMApplication.exe
         arguments: {{catalog_name}}
