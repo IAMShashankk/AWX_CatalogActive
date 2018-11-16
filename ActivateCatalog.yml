@@ -14,10 +14,10 @@
   - name: Download Required exe
     win_get_url:
       url: "ftp://indiaQA@ftp.harmonicinc.com/DoNotDeleteAWXFiles/COMApplication.exe"
-      dest: C:\Program Files\Harmonic\NMX\DOTNETGUI
+      dest: C:\Program Files\Harmonic\NMX\DOTNETGUI\
       url_username: "indiaQA"
       url_password: "4qAprsnt"
   - name: Make catalog active
     win_package:
-        path: C:\Program Files\Harmonic\NMX\DOTNETGUI\COMApplication.exe
-        arguments: {{catalog_name}}
+      path: C:\Program Files\Harmonic\NMX\DOTNETGUI\COMApplication.exe
+      arguments: {{catalog_name}}
