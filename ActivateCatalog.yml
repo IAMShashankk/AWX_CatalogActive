@@ -7,7 +7,7 @@
   tasks:
   - name: Download catalog from specified URL
     win_get_url:
-      url: "{{catalog_path}}/{{catalog_name}}.zip"
+      url: "{{catalog_path}}/{{catalog_name}}.hzp"
       dest: c:\DatabaseBkup\
       url_username: "{{username}}"
       url_password: "{{password}}"
