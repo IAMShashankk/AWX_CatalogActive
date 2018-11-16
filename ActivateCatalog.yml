@@ -20,4 +20,5 @@
   - name: Make catalog active
     win_package:
       path: C:\Program Files\Harmonic\NMX\DOTNETGUI\COMApplication.exe
+      product_id: ConsoleApp
       arguments: /{{catalog_name}}
