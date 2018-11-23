@@ -16,7 +16,7 @@
         rm: True
     - name: Find the Activate Catalog file
       win_find:
-        paths: C:\Temp\master
+        paths: C:\Temp\AWX_CatalogActive-master
         patterns: ['*.exe']
         recurse: True
       register: resultFile
