@@ -5,10 +5,14 @@
 # https://docs.ansible.com/ansible/win_reboot_module.html
 - hosts: all
   tasks:
-   - git:
-       repo: 'https://github.com/IAMShashankk/AWX_CatalogActive.git'
-       dest: /usr/include/python2.7/
-       version: f924009
+    - name: Download repository
+      win_get_url:
+        url:"https://github.com/IAMShashankk/AWX_CatalogActive/archive/master.zip"
+        dest: c:\DatabaseBkup\
+#   - git:
+#       repo: 'https://github.com/IAMShashankk/AWX_CatalogActive.git'
+#       dest: /usr/include/python2.7/
+#       version: f924009
 #  - name: Download catalog from specified URL
 #    win_get_url:
 #      url: "{{catalog_path}}/{{catalog_name}}.hzp"
