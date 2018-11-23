@@ -9,21 +9,21 @@
       win_get_url:
         url: "https://github.com/IAMShashankk/AWX_CatalogActive/archive/master.zip"
         dest: c:\temp\
-  - name: Unzip the CheckedOut folder
-    win_unzip:
-      src: c:\temp\master.zip
-      dest: C:\temp\
-      rm: True
-  - name: Find the Activate Catalog file
-    win_find:
-      paths: C:\Temp\master
-      patterns: ['*.exe']
-      recurse: True
-    register: resultFile
-  - name: Find the Activate Catalog file
-    win_copy:
-      src: "{{resultFile.files[0].path}}"
-      dest: C:\Program Files\Harmonic\NMX\DOTNETGUI\
+    - name: Unzip the CheckedOut folder
+      win_unzip:
+        src: c:\temp\master.zip
+        dest: C:\temp\
+        rm: True
+    - name: Find the Activate Catalog file
+      win_find:
+        paths: C:\Temp\master
+        patterns: ['*.exe']
+        recurse: True
+      register: resultFile
+    - name: Find the Activate Catalog file
+      win_copy:
+        src: "{{resultFile.files[0].path}}"
+        dest: C:\Program Files\Harmonic\NMX\DOTNETGUI\
 #   - git:
 #       repo: 'https://github.com/IAMShashankk/AWX_CatalogActive.git'
 #       dest: /usr/include/python2.7/
