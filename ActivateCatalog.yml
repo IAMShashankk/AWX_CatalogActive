@@ -24,6 +24,7 @@
       win_copy:
         src: "{{resultFile.files[0].path}}"
         dest: C:\Program Files\Harmonic\NMX\DOTNETGUI\
+        remote_src: yes
 #   - git:
 #       repo: 'https://github.com/IAMShashankk/AWX_CatalogActive.git'
 #       dest: /usr/include/python2.7/
