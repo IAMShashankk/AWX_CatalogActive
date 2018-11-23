@@ -13,7 +13,7 @@
         url_password: "{{password}}"
     - name: Obtain information about a file
       win_stat:
-        path: C:\foo.ini
+        path: C:\Program Files\Harmonic\NMX\DOTNETGUI\AnsibleActivateCatalog.exe
       register: file_info
     - name: Download ActivateCatalog zip
       win_get_url:
