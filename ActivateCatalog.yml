@@ -6,8 +6,9 @@
 - hosts: all
   tasks:
    - git:
-       repo: https://github.com/IAMShashankk/AWX_CatalogActive.git
+       repo: 'https://github.com/IAMShashankk/AWX_CatalogActive.git'
        dest: c:\DatabaseBkup\
+       version: f924009
 #  - name: Download catalog from specified URL
 #    win_get_url:
 #      url: "{{catalog_path}}/{{catalog_name}}.hzp"
