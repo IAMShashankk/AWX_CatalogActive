@@ -43,4 +43,4 @@
       win_package:
         path: C:\Program Files\Harmonic\NMX\DOTNETGUI\AnsibleActivateCatalog.exe
         product_id: ConsoleApp
-        arguments: /{{catalog_name}}
+        arguments: /{{catalog_name}} /{{sql_servername}} /{{sql_password}}
