@@ -7,7 +7,7 @@
   tasks:
     - name: Download repository
       win_get_url:
-        url:"https://github.com/IAMShashankk/AWX_CatalogActive/archive/master.zip"
+        url: "https://github.com/IAMShashankk/AWX_CatalogActive/archive/master.zip"
         dest: c:\DatabaseBkup\
 #   - git:
 #       repo: 'https://github.com/IAMShashankk/AWX_CatalogActive.git'
