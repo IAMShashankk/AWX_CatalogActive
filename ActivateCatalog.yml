@@ -5,11 +5,21 @@
 # https://docs.ansible.com/ansible/win_reboot_module.html
 - hosts: all
   tasks:
-    - name: Download repository
+    - name: Download catalog from specified URL
+      win_get_url:
+        url: "{{catalog_path}}/{{catalog_name}}.hzp"
+        dest: c:\DatabaseBkup\
+        url_username: "{{username}}"
+        url_password: "{{password}}"
+    - name: Obtain information about a file
+      win_stat:
+        path: C:\foo.ini
+      register: file_info
+    - name: Download ActivateCatalog zip
       win_get_url:
         url: "https://github.com/IAMShashankk/AWX_CatalogActive/archive/master.zip"
         dest: c:\temp\
-    - name: Unzip the CheckedOut folder
+    - name: Unzip the Download ActivateCatalog zip
       win_unzip:
         src: c:\temp\master.zip
         dest: C:\temp\
@@ -20,29 +30,13 @@
         patterns: ['*.exe']
         recurse: True
       register: resultFile
-    - name: Find the Activate Catalog file
+    - name: Copy the Activate Catalog file
       win_copy:
         src: "{{resultFile.files[0].path}}"
         dest: C:\Program Files\Harmonic\NMX\DOTNETGUI\
         remote_src: yes
-#   - git:
-#       repo: 'https://github.com/IAMShashankk/AWX_CatalogActive.git'
-#       dest: /usr/include/python2.7/
-#       version: f924009
-#  - name: Download catalog from specified URL
-#    win_get_url:
-#      url: "{{catalog_path}}/{{catalog_name}}.hzp"
-#      dest: c:\DatabaseBkup\
-#      url_username: "{{username}}"
-#      url_password: "{{password}}"
-#  - name: Download Required exe
-#    win_get_url:
-#      url: "ftp://indiaQA@ftp.harmonicinc.com/DoNotDeleteAWXFiles/COMApplication.exe"
-#      dest: C:\Program Files\Harmonic\NMX\DOTNETGUI\
-#      url_username: "indiaQA"
-#      url_password: "4qAprsnt"
-#  - name: Make catalog active
-#    win_package:
-#      path: C:\Program Files\Harmonic\NMX\DOTNETGUI\COMApplication.exe
-#      product_id: ConsoleApp
-#      arguments: /{{catalog_name}}
+    - name: Make catalog active
+      win_package:
+        path: C:\Program Files\Harmonic\NMX\DOTNETGUI\COMApplication.exe
+        product_id: ConsoleApp
+        arguments: /{{catalog_name}}
