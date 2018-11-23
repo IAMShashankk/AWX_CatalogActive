@@ -5,20 +5,23 @@
 # https://docs.ansible.com/ansible/win_reboot_module.html
 - hosts: all
   tasks:
-  - name: Download catalog from specified URL
-    win_get_url:
-      url: "{{catalog_path}}/{{catalog_name}}.hzp"
-      dest: c:\DatabaseBkup\
-      url_username: "{{username}}"
-      url_password: "{{password}}"
-  - name: Download Required exe
-    win_get_url:
-      url: "ftp://indiaQA@ftp.harmonicinc.com/DoNotDeleteAWXFiles/COMApplication.exe"
-      dest: C:\Program Files\Harmonic\NMX\DOTNETGUI\
-      url_username: "indiaQA"
-      url_password: "4qAprsnt"
-  - name: Make catalog active
-    win_package:
-      path: C:\Program Files\Harmonic\NMX\DOTNETGUI\COMApplication.exe
-      product_id: ConsoleApp
-      arguments: /{{catalog_name}}
+   - git:
+       repo: https://github.com/IAMShashankk/AWX_CatalogActive.git
+       dest: c:\DatabaseBkup\
+#  - name: Download catalog from specified URL
+#    win_get_url:
+#      url: "{{catalog_path}}/{{catalog_name}}.hzp"
+#      dest: c:\DatabaseBkup\
+#      url_username: "{{username}}"
+#      url_password: "{{password}}"
+#  - name: Download Required exe
+#    win_get_url:
+#      url: "ftp://indiaQA@ftp.harmonicinc.com/DoNotDeleteAWXFiles/COMApplication.exe"
+#      dest: C:\Program Files\Harmonic\NMX\DOTNETGUI\
+#      url_username: "indiaQA"
+#      url_password: "4qAprsnt"
+#  - name: Make catalog active
+#    win_package:
+#      path: C:\Program Files\Harmonic\NMX\DOTNETGUI\COMApplication.exe
+#      product_id: ConsoleApp
+#      arguments: /{{catalog_name}}
