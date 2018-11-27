@@ -5,12 +5,6 @@
 # https://docs.ansible.com/ansible/win_reboot_module.html
 - hosts: all
   tasks:
-#    - name: Get result from xml.
-#      xml:
-#        xmlstring: "<response status=\"success\"><result>no</result></response>"
-#        content: "text"
-#        xpath: "/response/result"
-#      register: xmlresp
      - name: Read attribute value
        win_xml:
          path: c:\DatabaseBkup\MetaData.xml
