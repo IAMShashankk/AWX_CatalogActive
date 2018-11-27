@@ -11,8 +11,13 @@
         dest: c:\DatabaseBkup\
         url_username: "{{username}}"
         url_password: "{{password}}"
-    - name: Make catalog active
-      win_package:
-        path: C:\Program Files\Harmonic\NMX\DOTNETGUI\AnsibleActivateCatalog.exe
-        product_id: ConsoleApp
-        arguments: /{{catalog_name}} /{{sql_servername}} /{{sql_password}}
+    - name: Download ActivateCatalog zip
+      win_get_url:
+        url: "https://github.com/IAMShashankk/AWX_CatalogActive/archive/master.zip"
+        dest: c:\temp\
+    - name: Unzip the Download ActivateCatalog zip
+      win_unzip:
+        src: c:\temp\master.zip
+        dest: C:\temp\
+        rm: True
+      when: file_info.stat.exists==false
