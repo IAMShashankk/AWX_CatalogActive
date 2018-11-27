@@ -5,7 +5,7 @@
 # https://docs.ansible.com/ansible/win_reboot_module.html
 - hosts: all
   tasks:
-     - name: Read attribute value
+     - name: Download catalog from specified URL
        win_xml:
          path: c:\DatabaseBkup\MetaData.xml
          xpath: /DatabaseList/Item/Info/CreatedBy
