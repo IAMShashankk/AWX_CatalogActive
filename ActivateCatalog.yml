@@ -12,10 +12,11 @@
          url_username: "{{username}}"
          url_password: "{{password}}"
      - name: Download catalog from specified URL
-       win_xml:
+       xml:
          path: c:\DatabaseBkup\MetaData.xml
          xpath: /DatabaseList/Item/Info/CreatedBy
          content: text
+         remote_src: yes
        register: xmlresp
 
 #    - name: Obtain information about a file
