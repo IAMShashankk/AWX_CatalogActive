@@ -11,12 +11,16 @@
          dest: c:\DatabaseBkup\
          url_username: "{{username}}"
          url_password: "{{password}}"
+     - name: Copy the Activate Catalog file
+       win_copy:
+         src: c:\DatabaseBkup\MetaData.xml
+         dest: /usr/lib/python2.7
+         remote_src: yes
      - name: Download catalog from specified URL
        xml:
-         path: c:\DatabaseBkup\MetaData.xml
+         path: /usr/lib/python2.7/MetaData.xml
          xpath: /DatabaseList/Item/Info/CreatedBy
          content: text
-         remote_src: yes
        register: xmlresp
 
 #    - name: Obtain information about a file
