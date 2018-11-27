@@ -20,4 +20,3 @@
         src: c:\temp\master.zip
         dest: C:\temp\
         rm: True
-      when: file_info.stat.exists==false
