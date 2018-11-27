@@ -5,18 +5,18 @@
 # https://docs.ansible.com/ansible/win_reboot_module.html
 - hosts: all
   tasks:
-    - name: Get result from xml.
-      xml:
-        xmlstring: "<response status=\"success\"><result>no</result></response>"
-        content: "text"
-        xpath: "/response/result"
-      register: xmlresp
-#    - name: Read attribute value
+#    - name: Get result from xml.
 #      xml:
-#        path: c:\DatabaseBkup\MetaData.xml
-#        xpath: /DatabaseList/Item/Info/CreatedBy
-#        content: text
+#        xmlstring: "<response status=\"success\"><result>no</result></response>"
+#        content: "text"
+#        xpath: "/response/result"
 #      register: xmlresp
+     - name: Read attribute value
+       win_xml:
+         path: c:\DatabaseBkup\MetaData.xml
+         xpath: /DatabaseList/Item/Info/CreatedBy
+         content: text
+       register: xmlresp
 #    - name: Download catalog from specified URL
 #      win_get_url:
 #        url: "{{catalog_path}}/{{catalog_name}}.hzp"
