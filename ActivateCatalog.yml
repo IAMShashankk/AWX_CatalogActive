@@ -5,18 +5,18 @@
 # https://docs.ansible.com/ansible/win_reboot_module.html
 - hosts: all
   tasks:
+#     - name: Download catalog from specified URL
+#       win_xml:
+#         path: c:\DatabaseBkup\MetaData.xml
+#         xpath: /DatabaseList/Item/Info/CreatedBy
+#         content: text
+#       register: xmlresp
      - name: Download catalog from specified URL
-       win_xml:
-         path: c:\DatabaseBkup\MetaData.xml
-         xpath: /DatabaseList/Item/Info/CreatedBy
-         content: text
-       register: xmlresp
-#    - name: Download catalog from specified URL
-#      win_get_url:
-#        url: "{{catalog_path}}/{{catalog_name}}.hzp"
-#        dest: c:\DatabaseBkup\
-#        url_username: "{{username}}"
-#        url_password: "{{password}}"
+       win_get_url:
+         url: "{{catalog_path}}/{{catalog_name}}.hzp"
+         dest: c:\DatabaseBkup\
+         url_username: "{{username}}"
+         url_password: "{{password}}"
 #    - name: Obtain information about a file
 #      win_stat:
 #        path: C:\Program Files\Harmonic\NMX\DOTNETGUI\AnsibleActivateCatalog.exe
