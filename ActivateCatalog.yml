@@ -4,14 +4,18 @@
 # http://docs.ansible.com/ansible/win_updates_module.html
 # https://docs.ansible.com/ansible/win_reboot_module.html
 - hosts: all
+  vars:
+     catalogname:""
   tasks:
   - set_fact:
       msg: "{{ catalog_path.split('/')[-1] }}"
   - set_fact:
-      msg: "{{ msg.split('.')[0] }}"
+      catalogname: "{{ msg.split('.')[0] }}"
+  - debug:
+      msg:{{catalogname}}
 #    - name: Download catalog from specified URL
 #      win_get_url:
-#        url: "{{catalog_path}}/{{catalog_name}}.hzp"
+#        url: "{{catalog_path}}"
 #        dest: c:\DatabaseBkup\
 #        url_username: "{{username}}"
 #        url_password: "{{password}}"
