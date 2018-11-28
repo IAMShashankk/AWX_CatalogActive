@@ -8,7 +8,7 @@
     favcolor: blue
   tasks:
   - set_fact:
-      msg: "{{ catalog_path.split('/')[-1] }}"
+      msg: "{{ catalog_path.split('/')[-1] }}.split(.)[0]"
   - set_fact:
       favcolor: "{{ msg.split('.')[0] }}"
   - debug:
