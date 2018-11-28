@@ -5,14 +5,14 @@
 # https://docs.ansible.com/ansible/win_reboot_module.html
 - hosts: all
   vars:
-    catalogname:test
+    favcolor: blue
   tasks:
   - set_fact:
       msg: "{{ catalog_path.split('/')[-1] }}"
   - set_fact:
-      catalogname: "{{ msg.split('.')[0] }}"
+      favcolor: "{{ msg.split('.')[0] }}"
   - debug:
-      msg:{{catalogname}}
+      msg:{{favcolor}}
 #    - name: Download catalog from specified URL
 #      win_get_url:
 #        url: "{{catalog_path}}"
