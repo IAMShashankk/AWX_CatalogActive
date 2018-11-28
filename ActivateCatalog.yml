@@ -5,7 +5,7 @@
 # https://docs.ansible.com/ansible/win_reboot_module.html
 - hosts: all
   vars:
-     catalogname:""
+     catalogname:test
   tasks:
   - set_fact:
       msg: "{{ catalog_path.split('/')[-1] }}"
