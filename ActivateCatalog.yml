@@ -12,7 +12,7 @@
   - set_fact:
       favcolor: "{{ msg.split('.')[0] }}"
   - debug:
-      msg:{{favcolor}}
+      msg:"{{favcolor}}"
 #    - name: Download catalog from specified URL
 #      win_get_url:
 #        url: "{{catalog_path}}"
