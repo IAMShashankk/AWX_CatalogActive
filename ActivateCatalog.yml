@@ -6,13 +6,13 @@
 - hosts: all
   tasks:
     - set_fact:
-        catalogName: "{{catalog_path.split('/')[-1]}}"
+        catalogName: "{{catalog_url.split('/')[-1]}}"
     - name: Download catalog from specified URL
       win_get_url:
-        url: "{{catalog_path}}"
+        url: "{{catalog_url}}"
         dest: c:\DatabaseBkup\
-        url_username: "{{username}}"
-        url_password: "{{password}}"
+        url_username: "{{url_username}}"
+        url_password: "{{url_password}}"
     - name: Obtain information about a file
       win_stat:
         path: C:\Program Files\Harmonic\NMX\DOTNETGUI\AnsibleActivateCatalog.exe
