@@ -5,8 +5,10 @@
 # https://docs.ansible.com/ansible/win_reboot_module.html
 - hosts: all
   tasks:
-  - debug:
+  - set_fact:
       msg: "{{ catalog_path.split('/')[-1] }}"
+  - set_fact:
+      msg: "{{ msg.split('.')[1] }}"
 #    - name: Download catalog from specified URL
 #      win_get_url:
 #        url: "{{catalog_path}}/{{catalog_name}}.hzp"
