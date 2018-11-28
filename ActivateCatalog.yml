@@ -6,7 +6,7 @@
 - hosts: all
   tasks:
   - debug:
-      msg: "{{ catalog_path.split('/') }}"
+      msg: "{{ catalog_path.split('/')[-1] }}"
 #    - name: Download catalog from specified URL
 #      win_get_url:
 #        url: "{{catalog_path}}/{{catalog_name}}.hzp"
