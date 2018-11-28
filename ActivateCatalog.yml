@@ -7,18 +7,18 @@
   vars:
     favcolor: blue
   tasks:
-  - set_fact:
-      msg: "{{ {{catalog_path.split('/')[-1]}}.split(.)[0] }}"
-  - set_fact:
-      favcolor: "{{ msg.split('.')[0] }}"
-  - debug:
-      msg:"{{favcolor}}"
-#    - name: Download catalog from specified URL
-#      win_get_url:
-#        url: "{{catalog_path}}"
-#        dest: c:\DatabaseBkup\
-#        url_username: "{{username}}"
-#        url_password: "{{password}}"
+    - set_fact:
+        msg: "{{catalog_path.split('/')[-1]}}"
+    - set_fact:
+        favcolor: "{{ msg.split('.')[0] }}"
+    - debug:
+        msg:"{{favcolor}}"
+    - name: Download catalog from specified URL
+      win_get_url:
+        url: "{{catalog_path}}"
+        dest: c:\DatabaseBkup\
+        url_username: "{{username}}"
+        url_password: "{{password}}"
 #    - name: Obtain information about a file
 #      win_stat:
 #        path: C:\Program Files\Harmonic\NMX\DOTNETGUI\AnsibleActivateCatalog.exe
@@ -47,12 +47,12 @@
    #     dest: C:\Program Files\Harmonic\NMX\DOTNETGUI\
    #     remote_src: yes
    #   when: file_info.stat.exists==false
-    #- name: Make catalog active
-    #  win_package:
-    #    path: C:\Program Files\Harmonic\NMX\DOTNETGUI\AnsibleActivateCatalog.exe
-    #    product_id: ConsoleApp
-    #    arguments: /{{catalog_name}} /{{sql_servername}} /{{sql_password}}
-    #- name: Delete the Active Catalog folder
+    - name: Make catalog active
+      win_package:
+        path: C:\Program Files\Harmonic\NMX\DOTNETGUI\AnsibleActivateCatalog.exe
+        product_id: ConsoleApp
+        arguments: /{{msg.split('.')[0]}} /{{sql_servername}} /{{sql_password}}
+#- name: Delete the Active Catalog folder
     #  win_file:
      #   path: C:\Temp\AWX_CatalogActive-master
      #   state: absent
