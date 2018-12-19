@@ -4,7 +4,7 @@
 # http://docs.ansible.com/ansible/win_updates_module.html
 # https://docs.ansible.com/ansible/win_reboot_module.html
 #- hosts: all
-  tasks:
+#  tasks:
     - set_fact:
         catalogName: "{{catalog_url.split('/')[-1]}}"
       when: catalogName is not defined
@@ -19,11 +19,11 @@
       win_stat:
         path: C:\Program Files\Harmonic\NMX\DOTNETGUI\AnsibleActivateCatalog.exe
       register: file_info
-    - name: Download ActivateCatalog zip
-      win_get_url:
-        url: "https://NMXAutomation@bitbucket360.harmonicinc.com/projects/NMXGROUP/repos/nmx_playbooks/browse/nmx_playbooks/AnsibleActivateCatalog.exe"
-        dest: C:\Program Files\Harmonic\NMX\DOTNETGUI\
-      when: file_info.stat.exists==false
+#    - name: Download ActivateCatalog zip
+#      win_get_url:
+#        url: "https://NMXAutomation@bitbucket360.harmonicinc.com/projects/NMXGROUP/repos/nmx_playbooks/browse/nmx_playbooks/AnsibleActivateCatalog.exe"
+#        dest: C:\Program Files\Harmonic\NMX\DOTNETGUI\
+#      when: file_info.stat.exists==false
 #    - name: Unzip the Download ActivateCatalog zip
 #      win_unzip:
 #        src: c:\temp\master.zip
@@ -43,12 +43,12 @@
 #        dest: C:\Program Files\Harmonic\NMX\DOTNETGUI\
 #        remote_src: yes
 #      when: file_info.stat.exists==false
-    - name: Make catalog active
-      win_package:
-        path: C:\Program Files\Harmonic\NMX\DOTNETGUI\AnsibleActivateCatalog.exe
-        product_id: ConsoleApp
-        arguments: /{{catalogName.split('.')[0]}} /{{sqlServername}} /{{sqlPassword}}
-      when: catalogName is defined
+#    - name: Make catalog active
+#      win_package:
+#        path: C:\Program Files\Harmonic\NMX\DOTNETGUI\AnsibleActivateCatalog.exe
+#        product_id: ConsoleApp
+#        arguments: /{{catalogName.split('.')[0]}} /{{sqlServername}} /{{sqlPassword}} /{{ansible_host}}
+#      when: catalogName is defined
 #    - name: Delete the Active Catalog folder
 #      win_file:
 #        path: C:\Temp\AWX_CatalogActive-master
